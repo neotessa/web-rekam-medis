@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('blood_pressure')->comment('uses the string data type because there are blood pressure units such as mmHg');
             $table->string('heartbeat')->comment('uses the string data type because there are heartbeat units such as BPM (Beat Per Minute)');
             $table->string('saturation')->comment('uses the string data type because saturation uses percent');
-            $table->string('respiratory_rate')->comment('uses the string data type because respiratory rate uses BPM (Breath Per Minute)');
             $table->integer('status')->comment('1 = Rawat Inap, 2 = Rawat Jalan, 3 = Pulang');
             $table->timestamps();
             $table->softDeletes();

@@ -15,4 +15,9 @@ class Owner extends Model
         'phone_number',
         'address',
     ];
+
+    public function patients()
+    {
+        return $this->hasMany(Patient::class);
+    }
 }

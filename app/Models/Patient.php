@@ -27,4 +27,9 @@ class Patient extends Model
     {
         return $this->belongsTo(Owner::class);
     }
+
+    public function patientDetail()
+    {
+        return $this->hasMany(PatientDetail::class);
+    }
 }
