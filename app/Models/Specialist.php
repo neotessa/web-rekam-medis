@@ -14,6 +14,10 @@ class Specialist extends Model
         'speciality_name',
     ];
 
+    /**
+     * Get the doctor that owns many specialist
+     */
+
     public function doctors()
     {
         return $this->hasMany(Doctor::class);

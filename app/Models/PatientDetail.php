@@ -22,6 +22,9 @@ class PatientDetail extends Model
         'status'
     ];
 
+    /**
+     * Get the patient that owns the patient details
+     */
     public function patient()
     {
         return $this->belongsTo(Patient::class);
