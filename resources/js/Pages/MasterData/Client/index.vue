@@ -88,6 +88,16 @@ import { Head } from '@inertiajs/vue3';
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 <div class="flex items-center gap-2">
+                                    Jenis Kelamin
+                                    <a href="#">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z" fill="#000000"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center gap-2">
                                     Email
                                     <a href="#">
                                         <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,6 +143,9 @@ import { Head } from '@inertiajs/vue3';
                             </td>
                             <td class="px-6 py-4">
                                 Radit
+                            </td>
+                            <td class="px-6 py-4">
+                                Cowok
                             </td>
                             <td class="px-6 py-4">
                                 Radi@gmail.com
