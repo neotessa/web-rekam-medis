@@ -12,7 +12,7 @@ class Patient extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'owner_id',
+        'client_id',
         'name',
         'species',
         'race',
@@ -20,12 +20,12 @@ class Patient extends Model
     ];
 
     /**
-     * Get the owner that owns the patient.
+     * Get the client that owns the patient.
      */
 
-    public function owner(): BelongsTo
+    public function client(): BelongsTo
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(client::class);
     }
 
     public function patientDetail()
