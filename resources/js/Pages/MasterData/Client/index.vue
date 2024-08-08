@@ -5,16 +5,16 @@ import { Head } from '@inertiajs/vue3';
 
 <template>
     <AuthenticatedLayout>
-        <div class="p-5 mx-5 bg-white border rounded-md ">
-            <div class="flex flex-col md:flex-row items-start md:justify-between justify-center gap-5 mb-5 ">
-                <div class="flex justify-between md:w-fit w-full">
-                    <a class="w-full text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</a>
-                    <a class="w-full text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Export</a>
-                    <a class="w-full text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Import</a>
+        <div class="p-5  bg-white border rounded-md">
+            <div class="flex flex-col lg:flex-row items-start md:justify-between justify-center gap-5 mb-5 ">
+                <div class="flex justify-between lg:w-96 w-full">
+                    <a class="w-full flex items-center justify-center text-center text-white bg-primary-500 hover:bg-primary-600 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-xs md:text-sm px-3 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Tambah Data</a>
+                    <a class="w-full flex items-center justify-center text-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs md:text-sm px-3 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Export</a>
+                    <a class="w-full flex items-center justify-center text-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs md:text-sm px-3 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Import</a>
                 </div>
-                <div class="md:w-fit w-full ">
+                <div class="lg:w-fit w-full ">
                     <div >
-                        <form class="w-full flex items-center justify-between gap-5">   
+                        <form class="min-w-full w-full flex items-center lg:justify-between sm:justify-end justify-between  gap-5">   
                             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
@@ -22,7 +22,7 @@ import { Head } from '@inertiajs/vue3';
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                     </svg>
                                 </div>
-                                <input type="search" id="default-search" class="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
+                                <input type="search" id="default-search" class="block w-64 p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" required />
                             </div>
                             <div class="relative">
                             <!-- filter -->
@@ -51,70 +51,134 @@ import { Head } from '@inertiajs/vue3';
                     </div>
                 </div>
             </div>
-            <div class="relative overflow-x-auto rounded-md">
-                <table class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <!-- table -->
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="min-w-max w-full table-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Product name
+                                <div class="flex items-center gap-2">
+                                    No
+                                    <a href="#">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z" fill="#000000"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Color
+                                <div class="flex items-center gap-2">
+                                    Id Client
+                                    <a href="#">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z" fill="#000000"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Category
+                                <div class="flex items-center gap-2">
+                                    Nama
+                                    <a href="#">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z" fill="#000000"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Price
+                                <div class="flex items-center gap-2">
+                                    Email
+                                    <a href="#">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z" fill="#000000"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center gap-2">
+                                    No Telp
+                                    <a href="#">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z" fill="#000000"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center gap-2">
+                                    Alamat
+                                    <a href="#">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z" fill="#000000"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <div class="flex items-center gap-2">
+                                    Action
+                                </div>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
+                                1
                             </th>
                             <td class="px-6 py-4">
-                                Silver
+                                Client1
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                Radit
                             </td>
                             <td class="px-6 py-4">
-                                $2999
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="px-6 py-4">
-                                White
+                                Radi@gmail.com
                             </td>
                             <td class="px-6 py-4">
-                                Laptop PC
+                                0812345678
                             </td>
                             <td class="px-6 py-4">
-                                $1999
+                                Cakung
                             </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td class="px-6 py-4">
-                                Black
-                            </td>
-                            <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $99
+                            <td class="px-6 py-4 ">
+                                <button type="button" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</button>
+                                <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Delete</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <!-- pagination -->
+                <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between p-5" aria-label="Table navigation">
+                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">1000</span></span>
+                    <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                        </li>
+                        <li>
+                            <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+                        </li>
+                        <li>
+                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
+
         </div>
         
     </AuthenticatedLayout>
