@@ -69,7 +69,7 @@ const showingNavigationDropdown = ref(false);
                     </li>
                     <li>
                         <a href="#" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
-                            <img src="/images/owner.svg" alt="Logo" />
+                            <img src="/images/client.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Daftar Client</span>
                         </a>
                     </li>

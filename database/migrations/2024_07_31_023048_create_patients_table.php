@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('owner_id')->comment('get the owner id not by foreignId column types to prevent complex updating in future');
+            $table->unsignedBigInteger('client_id')->comment('get the client id not by foreignId column types to prevent complex updating in future');
             $table->string('name');
             $table->string('species');
             $table->string('race');
