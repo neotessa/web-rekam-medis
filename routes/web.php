@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/items', [MasterDataItemController::class, 'index'])->name('items');
     Route::get('/items/create', [MasterDataItemController::class, 'create'])->name('items.create');
+    Route::get('/items/edit', [MasterDataItemController::class, 'edit'])->name('items.edit');
 });
 
 require __DIR__.'/auth.php';

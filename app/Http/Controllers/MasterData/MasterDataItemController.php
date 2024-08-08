@@ -19,4 +19,12 @@ class MasterDataItemController extends Controller
             'currentPage' => $currentPage
         ]);
     }
+
+    public function edit(){
+        $currentPage = 'Master Data Item';
+
+        return Inertia::render('MasterData/Item/edit',[
+            'currentPage' => $currentPage
+        ]);
+    }
 }
