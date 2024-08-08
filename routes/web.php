@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/clients', [MasterDataClientController::class, 'index'])->name('clients');
     Route::get('/clients/create', [MasterDataClientController::class, 'create'])->name('clients.create');
+    Route::get('/clients/edit', [MasterDataClientController::class, 'edit'])->name('clients.edit');
 
     Route::get('/items', [MasterDataItemController::class, 'index'])->name('items');
     Route::get('/items/create', [MasterDataItemController::class, 'create'])->name('items.create');

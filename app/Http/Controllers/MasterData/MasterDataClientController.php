@@ -20,4 +20,12 @@ class MasterDataClientController extends Controller
             'currentPage' => $currentPage
         ]);
     }
+
+    public function edit(){
+        $currentPage = 'Master Data edit Client';
+
+        return Inertia::render('MasterData/Client/edit',[
+            'currentPage' => $currentPage
+        ]);
+    }
 }
