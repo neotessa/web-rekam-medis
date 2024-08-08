@@ -11,4 +11,12 @@ class MasterDataUserController extends Controller
     public function index(){
         return Inertia::render('MasterData/User/index');
     }
+
+    public function create(){
+        $currentPage = 'Master Data Client';
+
+        return Inertia::render('MasterData/User/create',[
+            'currentPage' => $currentPage
+        ]);
+    }
 }

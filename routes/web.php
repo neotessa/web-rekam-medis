@@ -32,9 +32,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/rekam-medis', [MedicalRecordController::class, 'index'])->name('medical-record');
+
     Route::get('/users', [MasterDataUserController::class, 'index'])->name('users');
+    Route::get('/users/create', [MasterDataUserController::class, 'create'])->name('users.create');
+
     Route::get('/clients', [MasterDataClientController::class, 'index'])->name('clients');
+    Route::get('/clients/create', [MasterDataClientController::class, 'create'])->name('clients.create');
+
     Route::get('/items', [MasterDataItemController::class, 'index'])->name('items');
+    Route::get('/items/create', [MasterDataItemController::class, 'create'])->name('items.create');
 });
 
 require __DIR__.'/auth.php';
