@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/rekam-medis', [MedicalRecordController::class, 'index'])->name('medical-record');
+    Route::get('/rekam-medis/detail', [MedicalRecordController::class, 'detail'])->name('medical-record.detail');
 
     Route::get('/users', [MasterDataUserController::class, 'index'])->name('users');
     Route::get('/users/create', [MasterDataUserController::class, 'create'])->name('users.create');

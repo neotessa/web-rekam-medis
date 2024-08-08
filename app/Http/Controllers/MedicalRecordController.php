@@ -14,4 +14,12 @@ class MedicalRecordController extends Controller
             'currentPage' => $currentPage
         ]);
     }
+
+    public function detail(){
+        $currentPage = 'Detail Pasien';
+
+        return Inertia::render('MedicalRecord/detail',[
+            'currentPage' => $currentPage
+        ]);
+    }
 }
