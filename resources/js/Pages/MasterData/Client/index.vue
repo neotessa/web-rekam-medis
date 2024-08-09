@@ -27,7 +27,7 @@ import { Head } from '@inertiajs/vue3';
                             <div class="relative">
                             <!-- filter -->
                             <button id="dropdownFilterButton" data-dropdown-toggle="dropdownFilter" class="p-2 inline-flex items-center text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button">
-                                <img src="images/filter.svg" class="w-5" alt="">
+                                <img src="/images/filter.svg" class="w-5" alt="">
                             </button>
                                 <!-- Dropdown menu filter -->
                                 <div id="dropdownFilter" class=" z-10  hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">

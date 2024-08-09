@@ -73,7 +73,7 @@ const titlePage = computed(() => usePage().props.titlePage);
                                     type="button"
                                 >
                                     <img
-                                        src="images/filter.svg"
+                                        src="/images/filter.svg"
                                         class="w-5"
                                         alt=""
                                     />
