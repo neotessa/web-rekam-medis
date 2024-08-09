@@ -9,23 +9,30 @@ use Inertia\Inertia;
 class MasterDataClientController extends Controller
 {
     public function index(){
+        $titlePage = 'Master Data Client';
 
-        return Inertia::render('MasterData/Client/index');
-    }
-
-    public function create(){
-        $currentPage = 'Master Data Client';
-
-        return Inertia::render('MasterData/Client/create',[
-            'currentPage' => $currentPage
+        return Inertia::render('MasterData/Client/index',[
+            'titlePage' => $titlePage
         ]);
     }
 
+    public function create(){
+        $titlePage = 'Master Data Client';
+
+        return Inertia::render('MasterData/Client/create',[
+            'titlePage' => $titlePage
+        ]);
+    }
+
+    public function store(){
+
+    }
+
     public function edit(){
-        $currentPage = 'Master Data edit Client';
+        $titlePage = 'Master Data edit Client';
 
         return Inertia::render('MasterData/Client/edit',[
-            'currentPage' => $currentPage
+            'titlePage' => $titlePage
         ]);
     }
 }

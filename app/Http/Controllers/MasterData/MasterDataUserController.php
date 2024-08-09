@@ -13,10 +13,10 @@ class MasterDataUserController extends Controller
     }
 
     public function create(){
-        $currentPage = 'Master Data Client';
+        $titlePage = 'Master Data Client';
 
         return Inertia::render('MasterData/User/create',[
-            'currentPage' => $currentPage
+            'titlePage' => $titlePage
         ]);
     }
 }

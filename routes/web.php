@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicalRecordController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Penjadwalan\CalenderController;
+use App\Http\Controllers\Penjadwalan\AntrianController;
 use App\Http\Controllers\MasterData\MasterDataUserController;
 use App\Http\Controllers\MasterData\MasterDataClientController;
 use App\Http\Controllers\MasterData\MasterDataItemController;
@@ -33,16 +36,28 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/rekam-medis', [MedicalRecordController::class, 'index'])->name('medical-record');
     Route::get('/rekam-medis/detail', [MedicalRecordController::class, 'detail'])->name('medical-record.detail');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/users', [MasterDataUserController::class, 'index'])->name('users');
-    Route::get('/users/create', [MasterDataUserController::class, 'create'])->name('users.create');
+    // penjadwalan
+    Route::prefix('penjadwalan')->group(function () {
+        Route::get('/kalender', [CalenderController::class, 'index'])->name('kalender');
+        Route::get('/antrian', [AntrianController::class, 'index'])->name('antrian');
+    });
 
-    Route::get('/clients', [MasterDataClientController::class, 'index'])->name('clients');
-    Route::get('/clients/create', [MasterDataClientController::class, 'create'])->name('clients.create');
-    Route::get('/clients/edit', [MasterDataClientController::class, 'edit'])->name('clients.edit');
 
-    Route::get('/items', [MasterDataItemController::class, 'index'])->name('items');
-    Route::get('/items/create', [MasterDataItemController::class, 'create'])->name('items.create');
+    // masterdata
+    Route::prefix('master-data')->group(function () {
+        Route::get('/users', [MasterDataUserController::class, 'index'])->name('users');
+        Route::get('/users/create', [MasterDataUserController::class, 'create'])->name('users.create');
+
+        Route::get('/clients', [MasterDataClientController::class, 'index'])->name('clients');
+        Route::get('/clients/create', [MasterDataClientController::class, 'create'])->name('clients.create');
+        Route::get('/clients/edit', [MasterDataClientController::class, 'edit'])->name('clients.edit');
+
+        Route::get('/items', [MasterDataItemController::class, 'index'])->name('items');
+        Route::get('/items/create', [MasterDataItemController::class, 'create'])->name('items.create');
+        Route::get('/items/edit', [MasterDataItemController::class, 'edit'])->name('items.edit');
+    });
 });
 
 require __DIR__.'/auth.php';

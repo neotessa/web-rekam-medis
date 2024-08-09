@@ -8,10 +8,10 @@ use Inertia\Inertia;
 class MedicalRecordController extends Controller
 {
     public function index(){
-        $currentPage = 'Rekam Medis';
+        $titlePage = 'Rekam Medis';
 
         return Inertia::render('MedicalRecord/index',[
-            'currentPage' => $currentPage
+            'titlePage' => $titlePage
         ]);
     }
 
