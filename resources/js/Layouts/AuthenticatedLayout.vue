@@ -16,12 +16,10 @@ const isActive = (url) => {
 // Get the page title
 const pageTitle = computed(() => page.props.titlePage);
 
-console.log(currentUrl.value)
-
 </script>
 
 <template>
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0" aria-label="Sidebar">
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full lg:translate-x-0" aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-primary-600 dark:bg-gray-800">
         <a href="https://flowbite.com/" class="flex items-center w-full h-24 justify-center mb-5">
             <img src="/images/logo.png" class="w-40 h-24 " alt="Logo" />
@@ -41,15 +39,15 @@ console.log(currentUrl.value)
                   <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-secondary-100">Penjadwalan</span>
                   <img src="/images/arrow-y.svg" class="group-hover:rotate-0 active:rotate-0 group-active:rotate-0 rotate-180" alt="Logo" />
             </button> 
-            <ul id="penjadwalan" class="hidden py-2 space-y-2">
+            <ul id="penjadwalan" :class="{ 'hidden' : !isActive('/penjadwalan') }"  class="py-2 space-y-2">
                     <li>
-                        <Link :href="route('kalender')" :class="{ 'bg-primary-800': isActive('/kalender') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('kalender')" :class="{ 'bg-primary-800': isActive('/penjadwalan/kalender') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/calender-2.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Kalender</span>
                         </Link>
                     </li>
                     <li>
-                        <Link :href="route('antrian')" :class="{ 'bg-primary-800': isActive('/antrian') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('antrian')" :class="{ 'bg-primary-800': isActive('/penjadwalan/antrian') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/antrian.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Antrian</span>
                         </Link>
@@ -70,21 +68,21 @@ console.log(currentUrl.value)
                   <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-secondary-100">Master Data</span>
                   <img src="/images/arrow-y.svg" alt="Logo" />
             </button>
-            <ul id="master-data" class="hidden py-2 space-y-2">
+            <ul id="master-data" :class="{ 'hidden' : !isActive('/master-data') }" class=" py-2 space-y-2">
                     <li>
-                        <Link :href="route('users')" :class="{ 'bg-primary-800': isActive('/users') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('users')" :class="{ 'bg-primary-800': isActive('/master-data/users') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/user.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Daftar User</span>
                         </Link>
                     </li>
                     <li>
-                        <Link :href="route('clients')" :class="{ 'bg-primary-800': isActive('/clients') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('clients')" :class="{ 'bg-primary-800': isActive('/master-data/clients') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/client.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Daftar Client</span>
                         </Link>
                     </li>
                     <li>
-                        <Link :href="route('items')" :class="{ 'bg-primary-800': isActive('/items') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('items')" :class="{ 'bg-primary-800': isActive('/master-data/items') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/box.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Daftar Item</span>
                         </Link>
@@ -95,7 +93,7 @@ console.log(currentUrl.value)
     </div>
     </aside>
 
-    <div class="md:ml-64">
+    <div class="lg:ml-64">
         <!-- navbar -->
         <div class="bg-primary-500 p-3 text-secondary-100 flex items-center justify-between">
             <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 ms-3 text-sm text-white rounded-lg sm:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -227,7 +225,7 @@ console.log(currentUrl.value)
             </div>
         </div>
         <!-- main page  -->
-        <main class="bg-secondary-200 lg:p-5 p-2 h-screen">
+        <main class="bg-secondary-200 lg:p-5 p-2 min-h-screen max-h-max">
             <slot />
         </main>
     </div>

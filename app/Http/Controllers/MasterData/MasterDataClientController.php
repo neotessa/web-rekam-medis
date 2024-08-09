@@ -24,6 +24,10 @@ class MasterDataClientController extends Controller
         ]);
     }
 
+    public function store(){
+
+    }
+
     public function edit(){
         $titlePage = 'Master Data edit Client';
 

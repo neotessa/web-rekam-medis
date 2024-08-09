@@ -20,6 +20,10 @@ class MasterDataItemController extends Controller
         ]);
     }
 
+    public function store(){
+
+    }
+
     public function edit(){
         $titlePage = 'Master Data Item';
 

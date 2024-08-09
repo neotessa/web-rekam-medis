@@ -10,7 +10,25 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js" defer></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            initFlowbite();
+            });
+
+            // For Inertia.js, reinitialize after each navigation
+            document.addEventListener('inertia:navigate', function() {
+            initFlowbite();
+            });
+
+            function initFlowbite() {
+            if (typeof flowbite !== 'undefined') {
+                flowbite.initDropdowns();
+                flowbite.initModals();
+                // Initialize other components as needed
+            }
+            }
+        </script>
 
 
         <!-- Scripts -->
