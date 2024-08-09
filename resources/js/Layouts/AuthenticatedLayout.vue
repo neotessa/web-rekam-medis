@@ -1,13 +1,23 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import { ref, computed } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3';
 
-const showingNavigationDropdown = ref(false);
+const page = usePage();
+
+// Compute the current URL
+const currentUrl = computed(() => page.url);
+
+// Check if a given URL is active
+const isActive = (url) => {
+  return currentUrl.value.startsWith(url);
+};
+
+// Get the page title
+const pageTitle = computed(() => page.props.titlePage);
+
+console.log(currentUrl.value)
+
 </script>
 
 <template>
@@ -19,10 +29,10 @@ const showingNavigationDropdown = ref(false);
         <ul class="space-y-2 font-medium ">
             <!-- dashboard -->
             <li>
-                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                <Link :href="route('dashboard')" :class="{ 'bg-primary-800': isActive('/dashboard') }" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                     <img src="/images/dashboard.svg" alt="Logo" />
-                    <span class="ms-3 text-secondary-100    ">Dashboard</span>
-                </a>
+                    <span class="ms-3 text-secondary-100">Dashboard</span>
+                </Link>
             </li>
             <!-- Penjadwalan -->
             <li>
@@ -33,25 +43,25 @@ const showingNavigationDropdown = ref(false);
             </button> 
             <ul id="penjadwalan" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="#" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('kalender')" :class="{ 'bg-primary-800': isActive('/kalender') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/calender-2.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Kalender</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('antrian')" :class="{ 'bg-primary-800': isActive('/antrian') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/antrian.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Antrian</span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </li>
             <!-- Rekam Medis -->
             <li>
-                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                <Link :href="route('rekam-medis')" :class="{ 'bg-primary-800': isActive('/rekam-medis') }" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                     <img src="/images/medical-record.svg" alt="Logo" />
-                    <span class="ms-3 text-secondary-100">Rekam Medis</span>
-                </a>
+                    <span class="ms-3 text-secondary-100">Daftar rekam-medis</span>
+                </Link>
             </li>
             <!-- Penjadwalan -->
             <li>
@@ -62,22 +72,22 @@ const showingNavigationDropdown = ref(false);
             </button>
             <ul id="master-data" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="#" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('users')" :class="{ 'bg-primary-800': isActive('/users') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/user.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Daftar User</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('clients')" :class="{ 'bg-primary-800': isActive('/clients') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/client.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Daftar Client</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
+                        <Link :href="route('items')" :class="{ 'bg-primary-800': isActive('/items') }" class="flex items-center p-2 pl-10 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group">
                             <img src="/images/box.svg" alt="Logo" />
                             <span class="ms-3 text-secondary-100">Daftar Item</span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </li>
@@ -94,7 +104,7 @@ const showingNavigationDropdown = ref(false);
                     <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                 </svg>
             </button>
-            <h1> nama halaman </h1>
+            <h1> {{ pageTitle }} </h1>
             <!-- profile -->
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <div class="flex gap-5 text-end items-center">

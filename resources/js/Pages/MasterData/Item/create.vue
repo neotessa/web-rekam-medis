@@ -3,12 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
-const currentPage = computed(() => usePage().props.currentPage);
+const titlePage = computed(() => usePage().props.titlePage);
 </script>
 
 <template>
     <AuthenticatedLayout>
-        <h1>{{  currentPage }}</h1>
+        <h1>{{  titlePage }}</h1>
         <form action="" class="w-96 flex flex-col gap-5">
             <div class="relative">
                 <input type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />

@@ -13,18 +13,18 @@ class MasterDataItemController extends Controller
     }
 
     public function create(){
-        $currentPage = 'Master Data Item';
+        $titlePage = 'Master Data Item';
 
         return Inertia::render('MasterData/Item/create',[
-            'currentPage' => $currentPage
+            'titlePage' => $titlePage
         ]);
     }
 
     public function edit(){
-        $currentPage = 'Master Data Item';
+        $titlePage = 'Master Data Item';
 
         return Inertia::render('MasterData/Item/edit',[
-            'currentPage' => $currentPage
+            'titlePage' => $titlePage
         ]);
     }
 }

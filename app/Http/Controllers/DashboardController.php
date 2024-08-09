@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class MedicalRecordController extends Controller
+class DashboardController extends Controller
 {
     public function index(){
-        $titlePage = 'Rekam Medis';
+        $titlePage = 'Dashboard';
 
-        return Inertia::render('MedicalRecord/index',[
+        return Inertia::render('Dashboard',[
             'titlePage' => $titlePage
         ]);
     }

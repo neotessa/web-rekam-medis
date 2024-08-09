@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicalRecordController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Penjadwalan\CalenderController;
+use App\Http\Controllers\Penjadwalan\AntrianController;
 use App\Http\Controllers\MasterData\MasterDataUserController;
 use App\Http\Controllers\MasterData\MasterDataClientController;
 use App\Http\Controllers\MasterData\MasterDataItemController;
@@ -31,7 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/rekam-medis', [MedicalRecordController::class, 'index'])->name('medical-record');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/kalender', [CalenderController::class, 'index'])->name('kalender');
+    Route::get('/antrian', [AntrianController::class, 'index'])->name('antrian');
+    
+
+    Route::get('/rekam-medis', [MedicalRecordController::class, 'index'])->name('rekam-medis');
 
     Route::get('/users', [MasterDataUserController::class, 'index'])->name('users');
     Route::get('/users/create', [MasterDataUserController::class, 'create'])->name('users.create');
