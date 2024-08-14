@@ -15,4 +15,12 @@ class AntrianController extends Controller
             'titlePage' => $titlePage
         ]);
     }
+
+    public function create() {
+        $titlePage = 'Antrian - Tambah Data';
+
+        return Inertia::render('Penjadwalan/Antrian/Create', [
+            'titlePage' => $titlePage
+        ]);
+    }
 }

@@ -40,9 +40,12 @@ Route::middleware('auth')->group(function () {
     // penjadwalan
     Route::prefix('penjadwalan')->group(function () {
         Route::get('/kalender', [CalenderController::class, 'index'])->name('kalender');
-        Route::get('/antrian', [AntrianController::class, 'index'])->name('antrian');
-    });
 
+        Route::group(['prefix' => 'antrian'], function () {
+            Route::get('/', [AntrianController::class, 'index'])->name('antrian');
+            Route::get('/create', [AntrianController::class, 'create'])->name('antrian.create');
+        });
+    });
 
     // masterdata
     Route::prefix('master-data')->group(function () {

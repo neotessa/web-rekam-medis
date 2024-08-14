@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->string('phone_number')->nullable()->comment('TO DO: Change this');
+            $table->longText('address')->nullable()->comment('TO DO: Change this');
             $table->unsignedBigInteger('speciality_id');
             $table->timestamps();
             $table->softDeletes();
