@@ -11,15 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('user_roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('role');
+            $table->timestamps();
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable()->comment('TO DO: Change this');
             $table->string('password');
-            $table->string('phone_number')->nullable()->comment('TO DO: Change this');
-            $table->longText('address')->nullable()->comment('TO DO: Change this');
-            $table->integer('role')->default(1);
+            $table->unsignedBigInteger('role')->default(1);
+            $table->foreign('role')->references('id')->on('user_roles');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

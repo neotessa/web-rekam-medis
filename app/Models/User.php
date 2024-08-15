@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Doctor;
+use App\Models\Admin;
+use App\Models\UserRole;
 
 class User extends Authenticatable
 {
@@ -21,8 +24,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone_number',
-        'address',
         'role',
     ];
 
@@ -49,8 +50,29 @@ class User extends Authenticatable
         ];
     }
 
+    public function role()
+    {
+        return $this->belongsTo(UserRole::class, 'role');
+    }
+
     public function doctor()
     {
         return $this->hasOne(Doctor::class);
+    }
+
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
+    public function profile()
+    {
+        if ($this->role === 1) {
+            return $this->admin;
+        } elseif ($this->role === 2) {
+            return $this->doktor;
+        } else {
+            return null;
+        }
     }
 }
