@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
             // Create
             Route::get('/create', [AntrianController::class, 'create'])->name('antrian.create');
             Route::post('/create', [AntrianController::class, 'store'])->name('antrian.create');
+            Route::get('/rawat-inap', [AntrianController::class, 'inpatient'])->name('antrian.inpatient');
+            Route::get('/rawat-jalan', [AntrianController::class, 'outpatient'])->name('antrian.outpatient');
         });
     });
 

@@ -69,4 +69,20 @@ class AntrianController extends Controller
 
         return redirect()->route('penjadwalan/antrian')->with('success', 'Antrian berhasil ditambahkan.');
     }
+
+    public function inpatient(){
+        $titlePage = 'Rawat Inap';
+
+        return Inertia::render('Penjadwalan/Antrian/Inpatient/index',[
+            'titlePage' => $titlePage,
+        ]);
+    }
+
+    public function outpatient(){
+        $titlePage = 'Rawat Jalan';
+
+        return Inertia::render('Penjadwalan/Antrian/Outpatient/index',[
+            'titlePage' => $titlePage,
+        ]);
+    }
 }

@@ -26,12 +26,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable()->comment('TO DO: Change this');
             $table->string('password');
-<<<<<<<<< Temporary merge branch 1
-            $table->integer('role')->default(1);
-=========
-            $table->unsignedBigInteger('role')->default(1);
+            $table->unsignedBigInteger('role')->default(1)->comment('1 = Admin, 2 = Doctor, 3 = Nurse');
             $table->foreign('role')->references('id')->on('user_roles');
->>>>>>>>> Temporary merge branch 2
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
