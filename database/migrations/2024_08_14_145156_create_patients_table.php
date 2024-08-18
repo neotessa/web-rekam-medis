@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('client_id')->comment('get the client id not by foreignId column types to prevent complex updating in future');
-            $table->string('name');
-            $table->string('species');
-            $table->string('race');
+            $table->string('name', 255);
+            $table->string('species', 255);
+            $table->string('breed', 255);
+            $table->string('color', 255);
             $table->integer('age');
+            $table->enum('gender', ['male', 'female']);
+            $table->boolean('sterilized');
+            $table->text('vaccination_history');
+            $table->text('health_history');
+            $table->text('notes');
+            $table->string('photo', 255);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
