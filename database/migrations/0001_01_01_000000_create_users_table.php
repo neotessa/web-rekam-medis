@@ -23,8 +23,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable()->comment('TO DO: Change this');
             $table->string('password');
-            $table->unsignedBigInteger('role')->default(1);
-            $table->foreign('role')->references('id')->on('user_roles');
+            $table->string('phone_number')->nullable()->comment('TO DO: Change this');
+            $table->longText('address')->nullable()->comment('TO DO: Change this');
+            $table->integer('role')->default(1);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
