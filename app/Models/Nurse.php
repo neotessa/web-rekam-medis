@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 
-class Admin extends Model
+class Nurse extends Model
 {
     use HasFactory;
 
@@ -18,12 +17,8 @@ class Admin extends Model
         'address',
     ];
 
-    protected $casts = [
-        'date_of_birth' => 'datetime',
-    ];
-
     /**
-     * Get the associated user for the admin.
+     * Get the associated user for the doctor.
      */
     public function user()
     {

@@ -32,8 +32,8 @@ class AntrianController extends Controller
     public function create() {
 
         // Get all the Models correlated for the fetching in select form tag
-        $doctors = User::where('role', 'doctor')->get();
-        $nurses = User::where('role', 'nurse')->get();
+        $doctors = User::where('role', '1')->get();
+        $nurses = User::where('role', '2')->get();
         $clients = Client::all();
         $patients = Patient::all();
 

@@ -23,8 +23,11 @@ class Doctor extends Model
         'date_of_birth' => 'datetime',
     ];
 
+    /**
+     * Get the associated user for the doctor.
+     */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->morphOne(User::class, 'profile');
     }
 }

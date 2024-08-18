@@ -65,14 +65,11 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
+    /**
+     * Get the associated profile for the user.
+     */
     public function profile()
     {
-        if ($this->role === 1) {
-            return $this->admin;
-        } elseif ($this->role === 2) {
-            return $this->doktor;
-        } else {
-            return null;
-        }
+        return $this->morphTo();
     }
 }

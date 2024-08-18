@@ -6,11 +6,14 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
+const props = defineProps(['roles']);
+
 const form = useForm({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
+    role: '', // Add role to the form object
 });
 
 const submit = () => {
@@ -84,6 +87,25 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            </div>
+
+            <!-- Add the Role Selection -->
+            <div class="mt-4">
+                <InputLabel for="role" value="Role" />
+
+                <select
+                    id="role"
+                    class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    v-model="form.role"
+                    required
+                >
+                    <option value="" disabled>Select a role</option>
+                    <option v-for="role in roles" :key="role.id" :value="role.id">
+                        {{ role.role }}
+                    </option>
+                </select>
+
+                <InputError class="mt-2" :message="form.errors.role" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

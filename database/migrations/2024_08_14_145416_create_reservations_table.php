@@ -15,15 +15,12 @@ return new class extends Migration
             $table->id();
             $table->dateTime('reservation_date');
             $table->integer('status')->comment('1 = registered, 2 = in examination, 3 = completed');
-            $table->string('service_name', 255);
-            $table->unsignedBigInteger('doctor_user_id');
-            $table->unsignedBigInteger('admin_user_id');
+            $table->integer('service')->comment('1 = Appointment, 2 = Grooming, 3 = Rawat Inap, 4 = Rawat Jalan');
+            $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('nurse_id');
+            $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('patient_id');
-            $table->foreign('doctor_user_id')->references('id')->on('users');
-            $table->foreign('admin_user_id')->references('id')->on('users');
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();
         });
     }
