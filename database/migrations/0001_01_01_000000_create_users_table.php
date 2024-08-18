@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        /**
+         * Create the user_roles table to contain the roles
+         */
         Schema::create('user_roles', function (Blueprint $table) {
             $table->id();
-            $table->string('role');
+            $table->string('role')->comment('1 = Admin, 2 = Doctor, 3 = Nurse');
             $table->timestamps();
         });
 
@@ -23,9 +26,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable()->comment('TO DO: Change this');
             $table->string('password');
-            $table->string('phone_number')->nullable()->comment('TO DO: Change this');
-            $table->longText('address')->nullable()->comment('TO DO: Change this');
+<<<<<<<<< Temporary merge branch 1
             $table->integer('role')->default(1);
+=========
+            $table->unsignedBigInteger('role')->default(1);
+            $table->foreign('role')->references('id')->on('user_roles');
+>>>>>>>>> Temporary merge branch 2
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
