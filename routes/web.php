@@ -43,11 +43,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/kalender', [CalenderController::class, 'index'])->name('kalender');
 
         Route::group(['prefix' => 'antrian'], function () {
-            Route::get('/', [AntrianController::class, 'index'])->name('antrian');
+            Route::get('/terjadwal', [AntrianController::class, 'index'])->name('antrian');
 
             // Create
             Route::get('/create', [AntrianController::class, 'create'])->name('antrian.create');
             Route::post('/create', [AntrianController::class, 'store'])->name('antrian.create');
+            Route::get('/memulai', [AntrianController::class, 'memulai'])->name('antrian.memulai');
+            Route::get('/selesai', [AntrianController::class, 'selesai'])->name('antrian.selesai');
             Route::get('/rawat-inap', [AntrianController::class, 'inpatient'])->name('antrian.inpatient');
             Route::get('/rawat-jalan', [AntrianController::class, 'outpatient'])->name('antrian.outpatient');
         });

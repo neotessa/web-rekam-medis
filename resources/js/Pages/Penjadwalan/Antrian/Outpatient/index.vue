@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import Tabs from "@/Components/Tabs.vue";
 import { usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
 
@@ -8,6 +9,7 @@ const titlePage = computed(() => usePage().props.titlePage);
 
 <template>
     <AuthenticatedLayout>
+        <Tabs page="rawat-jalan"></Tabs>
         <div class="p-5 bg-white border rounded-md">
             <div
                 class="flex flex-col lg:flex-row items-start md:justify-between justify-center gap-5 mb-5"

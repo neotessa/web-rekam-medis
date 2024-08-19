@@ -16,10 +16,10 @@ class AntrianController extends Controller
      * Fetch the data for the index table and get the correlated eloquent relationships
      */
     public function index(){
-        $titlePage = 'Antrian';
+        $titlePage = 'Antrian > Terjadwal';
         $bookings = Booking::with(['user', 'client', 'patient'])->latest()->paginate();
 
-        return Inertia::render('Penjadwalan/Antrian/index',[
+        return Inertia::render('Penjadwalan/Antrian/Terjadwal/index',[
             'titlePage' => $titlePage,
             'bookings'  => $bookings
         ]);
@@ -70,8 +70,28 @@ class AntrianController extends Controller
         return redirect()->route('penjadwalan/antrian')->with('success', 'Antrian berhasil ditambahkan.');
     }
 
+    public function memulai(){
+        $titlePage = 'Antrian > Memulai';
+        $bookings = Booking::with(['user', 'client', 'patient'])->latest()->paginate();
+
+        return Inertia::render('Penjadwalan/Antrian/Memulai/index',[
+            'titlePage' => $titlePage,
+            'bookings'  => $bookings
+        ]);
+    }
+
+    public function selesai(){
+        $titlePage = 'Antrian > Selesai';
+        $bookings = Booking::with(['user', 'client', 'patient'])->latest()->paginate();
+
+        return Inertia::render('Penjadwalan/Antrian/Selesai/index',[
+            'titlePage' => $titlePage,
+            'bookings'  => $bookings
+        ]);
+    }
+
     public function inpatient(){
-        $titlePage = 'Rawat Inap';
+        $titlePage = 'Antrian > Rawat Inap';
 
         return Inertia::render('Penjadwalan/Antrian/Inpatient/index',[
             'titlePage' => $titlePage,
@@ -79,7 +99,7 @@ class AntrianController extends Controller
     }
 
     public function outpatient(){
-        $titlePage = 'Rawat Jalan';
+        $titlePage = 'Antrian > Rawat Jalan';
 
         return Inertia::render('Penjadwalan/Antrian/Outpatient/index',[
             'titlePage' => $titlePage,
