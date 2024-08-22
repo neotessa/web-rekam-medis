@@ -207,10 +207,10 @@ defineProps({
                         {{ user.email }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ "no tel" }}
+                        {{ user.doctor ? user.doctor.phone_number : user.admin ? user.admin.phone_number :null }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ "email" }}
+                        {{ user.email }}
                     </td>
                     <td class="px-6 py-4">
                         {{ user.role.role }}
