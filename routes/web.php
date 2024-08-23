@@ -47,6 +47,13 @@ Route::middleware('auth')->group(function () {
             // Create
             Route::get('/create', [AntrianController::class, 'create'])->name('antrian.create');
             Route::post('/create', [AntrianController::class, 'store'])->name('antrian.create');
+
+            // Edit
+            Route::get('/edit/{id}', [AntrianController::class, 'update'])->name('antrian.update');
+            Route::put('/edit/{id}', [AntrianController::class, 'edit'])->name('antrian.edit');
+
+            // Delete
+            Route::delete('/delete/{id}', [AntrianController::class, 'destroy'])->name('antrian.destroy');
         });
     });
 

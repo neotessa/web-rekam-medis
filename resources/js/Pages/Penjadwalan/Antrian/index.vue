@@ -5,7 +5,7 @@ import SearchBar from "./Partials/SearchBar.vue";
 import Table from "./Partials/Table.vue";
 
 defineProps({
-    bookings: Object,
+    reservations: Object,
 })
 </script>
 
@@ -17,6 +17,6 @@ defineProps({
                 <SearchBar />
             </div>
         </div>
-            <Table :bookings="bookings" />
+        <Table :reservations="reservations" />
     </AuthenticatedLayout>
 </template>

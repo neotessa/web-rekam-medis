@@ -14,6 +14,7 @@ use App\Models\InvoiceItem;
 use App\Models\Item;
 use App\Models\ItemCategory;
 use App\Models\MedicalRecord;
+use App\Models\Nurse;
 use App\Models\Outpatient;
 use App\Models\Patient;
 use App\Models\Reservation;
@@ -26,8 +27,9 @@ class DatabaseSeeder extends Seeder
         // Create UserRoles
         $adminRole = UserRole::create(['role' => 'admin']);
         $doctorRole = UserRole::create(['role' => 'doctor']);
+        $nurseRole = UserRole::create(['role' => 'nurse']);
 
-        // Create Users, Admins, and Doctors
+        // Create Users, Admins, Doctors, and Nurse
         for ($i = 0; $i < 5; $i++) {
             $user = User::create([
                 'name' => "Admin User $i",
@@ -58,6 +60,22 @@ class DatabaseSeeder extends Seeder
                 'phone_number' => '1234567890',
                 'address' => '123 Main St',
                 'specialization' => 'General Practice',
+            ]);
+        }
+
+        for ($i = 0; $i < 10; $i++) {
+            $user = User::create([
+                'name' => "Nurse User $i",
+                'email' => "nurse$i@example.com",
+                'password' => bcrypt('password'),
+                'role' => $nurseRole->id,
+            ]);
+            Nurse::create([
+                'user_id' => $user->id,
+                'date_of_birth' => '1980-01-01',
+                'gender' => 'male',
+                'phone_number' => '1234567890',
+                'address' => '123 Main St',
             ]);
         }
 
@@ -191,10 +209,11 @@ class DatabaseSeeder extends Seeder
         for ($i = 0; $i < 30; $i++) {
             Reservation::create([
                 'reservation_date' => now()->addDays(rand(1, 10)),
-                'status' => rand(0, 1), // 'pending' : 'confirmed'
-                'service_name' => 'Check-up',
-                'doctor_user_id' => User::where('role', $doctorRole->id)->inRandomOrder()->first()->id,
-                'admin_user_id' => User::where('role', $adminRole->id)->inRandomOrder()->first()->id,
+                'status' => rand(1, 3), // 1 = registered, 2 = in examination, 3 = completed
+                'service' => rand(1, 4), // 1 = Appointment, 2 = Grooming, 3 = Rawat Inap, 4 = Rawat Jalan
+                'doctor_id' => User::where('role', $doctorRole->id)->inRandomOrder()->first()->id,
+                'nurse_id' => User::where('role', $nurseRole->id)->inRandomOrder()->first()->id,
+                'created_by' => User::where('role', $adminRole->id)->inRandomOrder()->first()->id,
                 'client_id' => Client::inRandomOrder()->first()->id,
                 'patient_id' => Patient::inRandomOrder()->first()->id,
             ]);

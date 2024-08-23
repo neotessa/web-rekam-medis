@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Penjadwalan;
 
 use App\Http\Controllers\Controller;
-use App\Models\Booking;
+use App\Models\Reservation;
 use App\Models\Client;
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class AntrianController extends Controller
@@ -15,25 +16,25 @@ class AntrianController extends Controller
     /**
      * Fetch the data for the index table and get the correlated eloquent relationships
      */
-    public function index(){
+    public function index()
+    {
         $titlePage = 'Antrian';
-        $bookings = Booking::with(['user', 'client', 'patient'])->latest()->paginate();
+        $reservations = Reservation::with(['doctor', 'nurse', 'client', 'patient', 'created_by'])->latest()->paginate(10);
 
         return Inertia::render('Penjadwalan/Antrian/index',[
             'titlePage' => $titlePage,
-            'bookings'  => $bookings
+            'reservations' => $reservations
         ]);
     }
 
     /**
      * antrian/create route to view the form
      */
-
-    public function create() {
-
+    public function create()
+    {
         // Get all the Models correlated for the fetching in select form tag
-        $doctors = User::where('role', '1')->get();
-        $nurses = User::where('role', '2')->get();
+        $doctors = User::where('role', '2')->get(); // Assuming role 2 is Doctor
+        $nurses = User::where('role', '3')->get(); // Assuming role 3 is Nurse
         $clients = Client::all();
         $patients = Patient::all();
 
@@ -44,29 +45,101 @@ class AntrianController extends Controller
             'nurses' => $nurses,
             'clients' => $clients,
             'patients' => $patients,
-
             'titlePage' => $titlePage
         ]);
     }
 
     /**
-     *  antrian/create route to insert the data
+     *  antrian/store route to insert the data
      */
-
-    public function store(Request $request) {
-
-        // Validate all the inputs
+    public function store(Request $request)
+    {
+        // Validate all the required data before storing
         $validated = $request->validate([
-            'booking_date'  => 'required|date',
-            'status'        => 'required|integer|in:1,2,3',
-            'service'       => 'required|integer|in:1,2',
-            'user_id'       => 'required|exists:users,id',
-            'client_id'     => 'required|exists:clients,id',
-            'patient_id'    => 'required|exists:patients,id',
+            'reservation_date' => 'required|date',
+            'status'           => 'required|integer|in:1,2,3',
+            'service'          => 'required|integer|in:1,2,3,4',
+            'doctor_id'        => 'required|exists:users,id',
+            'nurse_id'         => 'required|exists:users,id',
+            'created_by'       => 'required|exists:users,id',
+            'client_id'        => 'required|exists:clients,id',
+            'patient_id'       => 'required|exists:patients,id',
         ]);
 
-        Booking::create($validated);
+        // Pass all the validated data
+        $data = [
+            'reservation_date' => $validated['reservation_date'],
+            'service' => $validated['service'],
+            'status' => $validated['status'],
+            'doctor_id' => $validated['doctor_id'],
+            'nurse_id' => $validated['nurse_id'],
+            'created_by' => $validated['created_by'],
+            'client_id' => $validated['client_id'],
+            'patient_id' => $validated['patient_id'],
+        ];
 
-        return redirect()->route('penjadwalan/antrian')->with('success', 'Antrian berhasil ditambahkan.');
+        // Store all the validated data
+        Reservation::create($data);
+
+        return redirect()->route('antrian')->with('message', 'Antrian berhasil ditambahkan.');
+    }
+
+    /**
+     * antrian/update to get the form view for update data
+     */
+    public function update($id)
+    {
+        // Get the reservation data and correlated models
+        $reservation = Reservation::findOrFail($id);
+        $doctors = User::where('role', '2')->get(); // Assuming role 2 is Doctor
+        $nurses = User::where('role', '3')->get(); // Assuming role 3 is Nurse
+        $clients = Client::all();
+        $patients = Patient::all();
+
+        $titlePage = 'Antrian - Edit Data';
+
+        return Inertia::render('Penjadwalan/Antrian/Create', [
+            'reservation' => $reservation,
+            'doctors' => $doctors,
+            'nurses' => $nurses,
+            'clients' => $clients,
+            'patients' => $patients,
+            'titlePage' => $titlePage
+        ]);
+    }
+
+    /**
+     * antrian/edit to reach the edit methods
+     */
+    public function edit(Request $request, $id)
+    {
+        // Validate the data
+        $validated = $request->validate([
+            'reservation_date' => 'required|date',
+            'status'           => 'required|integer|in:1,2,3',
+            'service'          => 'required|integer|in:1,2,3,4',
+            'doctor_id'        => 'required|exists:users,id',
+            'nurse_id'         => 'required|exists:users,id',
+            'client_id'        => 'required|exists:clients,id',
+            'patient_id'       => 'required|exists:patients,id',
+        ]);
+
+        // Find the reservation and update it
+        $reservation = Reservation::findOrFail($id);
+        $reservation->update($validated);
+
+        return redirect()->route('antrian')->with('message', 'Antrian berhasil diperbarui.');
+    }
+
+    /**
+     * antrian/delete to delete the data
+     */
+    public function destroy($id)
+    {
+        // Find the reservation and delete it
+        $reservation = Reservation::findOrFail($id);
+        $reservation->delete();
+
+        return redirect()->route('antrian')->with('message', 'Antrian berhasil dihapus.');
     }
 }

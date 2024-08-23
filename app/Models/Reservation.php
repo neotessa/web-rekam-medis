@@ -15,15 +15,16 @@ class Reservation extends Model
     protected $fillable = [
         'reservation_date',
         'status',
-        'service_name',
-        'doctor_user_id',
-        'admin_user_id',
+        'service',
+        'doctor_id',
+        'nurse_id',
+        'created_by',
         'client_id',
         'patient_id',
     ];
 
     protected $casts = [
-        'reservation_date' => 'datetime',
+        'reservation_date' => 'datetime:Y-m-d\TH:i:s',
     ];
 
     /**
@@ -31,15 +32,15 @@ class Reservation extends Model
      */
     public function doctor()
     {
-        return $this->belongsTo(User::class, 'doctor_user_id');
+        return $this->belongsTo(User::class, 'doctor_id');
     }
 
     /**
      * Get the admin that owns the reservation
      */
-    public function admin()
+    public function created_by()
     {
-        return $this->belongsTo(User::class, 'admin_user_id');
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     /**
@@ -56,5 +57,12 @@ class Reservation extends Model
     public function patient()
     {
         return $this->belongsTo(Patient::class, 'patient_id');
+    }
+
+    /**
+     * Get the nurse that owns the reservation
+     */
+    public function nurse() {
+        return $this->belongsTo(Nurse::class, 'nurse_id');
     }
 }
