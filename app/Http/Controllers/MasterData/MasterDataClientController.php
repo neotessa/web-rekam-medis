@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\MasterData;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Client;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MasterDataClientController extends Controller
 {
@@ -12,7 +13,8 @@ class MasterDataClientController extends Controller
         $titlePage = 'Master Data Client';
 
         return Inertia::render('MasterData/Client/index',[
-            'titlePage' => $titlePage
+            'titlePage' => $titlePage,
+            'clients' => Client::latest()->paginate()
         ]);
     }
 

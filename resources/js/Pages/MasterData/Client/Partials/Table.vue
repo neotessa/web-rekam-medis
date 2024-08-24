@@ -3,9 +3,9 @@ import Button from "@/Components/Button.vue";
 import Pagination from "@/Components/Pagination.vue";
 import { Link } from "@inertiajs/vue3";
 
-// Pass the users data from the backend as object
+// Pass the clients data from the backend as object
 defineProps({
-    users: Object,
+    clients: Object,
 });
 </script>
 
@@ -39,7 +39,7 @@ defineProps({
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center gap-2">
-                            Id User
+                            Id Client
                             <a href="#">
                                 <svg
                                     width="14"
@@ -77,7 +77,7 @@ defineProps({
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center gap-2">
-                            Email
+                            Jenis Kelamin
                             <a href="#">
                                 <svg
                                     width="14"
@@ -132,7 +132,7 @@ defineProps({
                             </a>
                         </div>
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <!-- <th scope="col" class="px-6 py-3">
                         <div class="flex items-center gap-2">
                             Role
                             <a href="#">
@@ -150,17 +150,16 @@ defineProps({
                                 </svg>
                             </a>
                         </div>
-                    </th>
+                    </th> -->
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center gap-2">Action</div>
                     </th>
                 </tr>
             </thead>
-
             <tbody>
                 <tr
-                    v-for="(user, index) in users.data"
-                    :key="user.id"
+                    v-for="(clients, index) in clients.data"
+                    :key="clients.id"
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
                     <th
@@ -170,25 +169,25 @@ defineProps({
                         {{ index + 1 }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ user.id }}
+                        {{ clients.id }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ user.name }}
+                        {{ clients.name }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ user.email }}
+                        {{ clients.gender }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ user.doctor ? user.doctor.phone_number : user.admin ? user.admin.phone_number :null }}
+
                     </td>
                     <td class="px-6 py-4">
-                        {{ user.email }}
+                        {{ clients.phone_number }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ user.role.role }}
+                        {{ clients.address }}
                     </td>
                     <td class="px-6 py-4 flex">
-                        <Link :href="route('users')" class="mr-2">
+                        <!-- <Link :href="route('users')" class="mr-2">
                             <Button
                                 :background="'bg-lime-500 dark:bg-lime-500 text-white'"
                                 :hover="'hover:bg-lime-600 dark:hover:bg-lime-600'"
@@ -196,9 +195,9 @@ defineProps({
                             >
                                 Edit
                             </Button>
-                        </Link>
+                        </Link> -->
                         <Link
-                            :href="route('users')"
+                            :href="route('client')"
                             method="delete"
                             as="button"
                             type="button"
