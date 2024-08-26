@@ -65,6 +65,11 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
+    public function nurse()
+    {
+        return $this->handle(Nurse::class);
+    }
+
     /**
      * Get the associated profile for the user.
      */

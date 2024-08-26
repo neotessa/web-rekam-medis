@@ -4,6 +4,9 @@ import Header from "./Partials/Header.vue";
 import SearchBar from "./Partials/SearchBar.vue";
 import Table from "./Partials/Table.vue";
 
+/**
+ * Pass the reservations prop to index
+ */
 defineProps({
     reservations: Object,
 })

@@ -16,10 +16,37 @@ class AntrianController extends Controller
     /**
      * Fetch the data for the index table and get the correlated eloquent relationships
      */
-    public function index()
+    public function index(Request $request)
     {
+        // Set the title and get the correlated tables for livesearch and for fetching the data to the table view
+        $search = $request->input('search');
+
         $titlePage = 'Antrian';
-        $reservations = Reservation::with(['doctor', 'nurse', 'client', 'patient', 'created_by'])->latest()->paginate(10);
+
+        // make a search feature
+        $query = Reservation::with(['client', 'patient', 'doctor', 'nurse', 'created_by'])
+        ->latest('id') // sort by id in descending order (newest first)
+        ->when($search, function ($q) use ($search) {
+            $q->where('status', 'like', "%{$search}%")
+                ->orWhereHas('client', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })
+                ->orWhereHas('patient', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })
+                ->orWhereHas('doctor', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })
+                ->orWhereHas('nurse', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                })
+                ->orWhereHas('created_by', function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%");
+                });
+        });
+
+        // Paginate the result
+        $reservations = $query->paginate(10);
 
         return Inertia::render('Penjadwalan/Antrian/index',[
             'titlePage' => $titlePage,

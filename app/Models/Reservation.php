@@ -63,6 +63,6 @@ class Reservation extends Model
      * Get the nurse that owns the reservation
      */
     public function nurse() {
-        return $this->belongsTo(Nurse::class, 'nurse_id');
+        return $this->belongsTo(User::class, 'nurse_id');
     }
 }
