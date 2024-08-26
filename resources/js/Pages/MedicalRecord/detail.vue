@@ -20,11 +20,18 @@ const currentPage = computed(() => usePage().props.currentPage);
                         src="/images/blankProfile.svg"
                         alt="Extra large Profile"
                     />
-                    <p class="font-bold text-center py-3 text-sm sm:text-lg">
-                        Kucing
-                    </p>
+                    <div
+                        class="bg-red-600 p-2 mx-auto mt-3 rounded-lg w-fit"
+                        title="Aggressive"
+                    >
+                        <img
+                            src="/images/paw-danger.svg"
+                            alt="Trash Logo"
+                            class="w-7 inline align-middle"
+                        />
+                    </div>
                 </div>
-                <div class="flex text-xs sm:text-base mx-3 px-3">
+                <div class="flex justify-normal text-xs sm:text-base mx-3 px-3">
                     <ul class="list-none mx-3">
                         <li>Nama</li>
                         <li>Spesies</li>
@@ -64,6 +71,18 @@ const currentPage = computed(() => usePage().props.currentPage);
                         <li>"riwayat vaksin"</li>
                         <li>"riwayat kesehatan"</li>
                     </ul>
+                </div>
+                <div class="ml-auto">
+                    <button
+                        type="button"
+                        class="text-white bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-amber-400 dark:hover:bg-amber-500 focus:outline-none dark:focus:ring-amber-300"
+                    >
+                        <img
+                            src="/images/Edit.svg"
+                            alt="Trash Logo"
+                            class="w-6 inline align-middle"
+                        />
+                    </button>
                 </div>
             </div>
             <!-- Patients Visits Section -->
@@ -343,6 +362,125 @@ const currentPage = computed(() => usePage().props.currentPage);
             <!-- Medical Records Sections -->
             <div class="flex justify-between bg-primary-500 px-3 py-3 rounded">
                 <p class="text-white font-semibold text-lg">Rekam Medis</p>
+            </div>
+            <div
+                class="bg-white my-3 px-4 py-4 rounded flex flex-wrap gap-3 justify-center"
+            >
+                <div class="flex gap-3">
+                    <div class="relative max-w-sm">
+                        <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                        >
+                            <svg
+                                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                                />
+                            </svg>
+                        </div>
+                        <input
+                            datepicker
+                            id="default-datepicker"
+                            type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Select date"
+                        />
+                    </div>
+
+                    <div class="relative max-w-sm">
+                        <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                        >
+                            <svg
+                                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                                />
+                            </svg>
+                        </div>
+                        <input
+                            datepicker
+                            id="default-datepicker"
+                            type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Select date"
+                        />
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    class="text-white bg-primary-500 hover:bg-primary-600 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm w-full md:w-44 py-2.5 me-2 mb-2 dark:bg-primary-500 dark:hover:bg-primary-600 focus:outline-none dark:focus:ring-primary-300"
+                >
+                    Bandingkan Data
+                </button>
+            </div>
+            <div class="flex gap-2 text-xs md:text-base">
+                <div class="grid grid-rows-11 gap-2 bg-white p-2 rounded w-1/3">
+                    <p class="px-1 font-bold text-center">Data</p>
+                    <p class="font-bold px-1">Temperatur</p>
+                    <p class="font-bold bg-gray-100 px-1">Berat badan</p>
+                    <p class="font-bold px-1">Gula Darah</p>
+                    <p class="font-bold bg-gray-100 px-1">Tekanan Darah</p>
+                    <p class="font-bold px-1">Detak Jantung</p>
+                    <p class="font-bold bg-gray-100 px-1">Saturasi</p>
+                    <p class="font-bold px-1">Pernapasan</p>
+                    <p class="font-bold bg-gray-100 px-1">Penanganan Khusus</p>
+                    <p class="font-bold px-1">Medikasi</p>
+                    <p class="font-bold bg-gray-100 px-1">Catatan</p>
+                </div>
+                <div
+                    class="grid grid-rows-11 gap-2 bg-white p-2 rounded w-full"
+                >
+                    <p class="px-1 font-bold text-center">17 Agustus 2024</p>
+                    <p class="px-1">100 C</p>
+                    <p class="bg-gray-100 px-1">90 gram</p>
+                    <p class="px-1">123</p>
+                    <p class="bg-gray-100 px-1">456</p>
+                    <p class="px-1">789</p>
+                    <p class="bg-gray-100 px-1">901</p>
+                    <p class="px-1">234</p>
+                    <p class="bg-gray-100 px-1">-</p>
+                    <p class="px-1">-</p>
+                    <p class="bg-gray-100 px-1">Lorem ipsum dol</p>
+                </div>
+                <div
+                    class="grid grid-rows-11 gap-2 bg-white p-2 rounded w-full"
+                >
+                    <p class="px-1 font-bold text-center">19 Agustus 2024</p>
+                    <p class="px-1">100 C</p>
+                    <p class="bg-gray-100 px-1">90 gram</p>
+                    <p class="px-1">123</p>
+                    <p class="bg-gray-100 px-1">456</p>
+                    <p class="px-1">789</p>
+                    <p class="bg-gray-100 px-1">901</p>
+                    <p class="px-1">234</p>
+                    <p class="bg-gray-100 px-1">-</p>
+                    <p class="px-1">-</p>
+                    <p class="bg-gray-100 px-1">Lorem ipsum dol</p>
+                </div>
+                <div class="grid grid-rows-11 gap-2 bg-white p-2 rounded w-1/4">
+                    <p class="px-1 font-bold text-center">Beda</p>
+                    <p class="px-1">100 C</p>
+                    <p class="bg-gray-100 px-1">90 gram</p>
+                    <p class="px-1">123</p>
+                    <p class="bg-gray-100 px-1">456</p>
+                    <p class="px-1">789</p>
+                    <p class="bg-gray-100 px-1">901</p>
+                    <p class="px-1">234</p>
+                    <p class="bg-gray-100 px-1">-</p>
+                    <p class="px-1">-</p>
+                    <p class="bg-gray-100 px-1">-</p>
+                </div>
             </div>
         </div>
     </AuthenticatedLayout>
