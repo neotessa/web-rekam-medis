@@ -156,6 +156,7 @@ defineProps({
                     </th>
                 </tr>
             </thead>
+            
             <tbody>
                 <tr
                     v-for="(clients, index) in clients.data"
@@ -178,16 +179,14 @@ defineProps({
                         {{ clients.gender }}
                     </td>
                     <td class="px-6 py-4">
-
-                    </td>
-                    <td class="px-6 py-4">
                         {{ clients.phone_number }}
                     </td>
                     <td class="px-6 py-4">
                         {{ clients.address }}
                     </td>
                     <td class="px-6 py-4 flex">
-                        <!-- <Link :href="route('users')" class="mr-2">
+                        <!-- change this -->
+                        <Link :href="route('clients.edit')" class="mr-2">
                             <Button
                                 :background="'bg-lime-500 dark:bg-lime-500 text-white'"
                                 :hover="'hover:bg-lime-600 dark:hover:bg-lime-600'"
@@ -195,9 +194,9 @@ defineProps({
                             >
                                 Edit
                             </Button>
-                        </Link> -->
+                        </Link>
                         <Link
-                            :href="route('client')"
+                            :href="route('clients')"
                             method="delete"
                             as="button"
                             type="button"
