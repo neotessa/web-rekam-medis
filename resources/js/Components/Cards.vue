@@ -1,13 +1,32 @@
 <template>
     <div
-        class="flex h-40 w-full flex-col rounded-md border-l-4 border-l-red-600 bg-red-400 p-2"
+        class="flex h-40 w-32 flex-col rounded-md overflow-hidden border-l-4 border-l-red-600 bg-red-400 p-2"
     >
-        <p class="text-md font-semibold text-center underline">{{ time }}</p>
-        <p class="text-lg font-bold text-center italic">{{ service }}</p>
-        <p class="text-base font-semibold">{{ patient }}</p>
-        <p class="text-sm font-medium">{{ client }}</p>
-        <p class="text-sm font-medium">{{ doctor }}</p>
-        <p class="text-sm font-medium">{{ status }}</p>
+        <p class="text-sm md:text-base font-semibold text-center underline">
+            {{ time }}
+        </p>
+        <p class="text-base md:text-base font-bold text-center italic">
+            {{ service }}
+        </p>
+        <p
+            class="text-sm md:text-base font-semibold truncate text-ellipsis"
+            :title="patient"
+        >
+            {{ patient }}
+        </p>
+        <p
+            class="text-xs md:text-sm font-medium truncate text-ellipsis"
+            :title="client"
+        >
+            {{ client }}
+        </p>
+        <p
+            class="text-xs md:text-sm font-medium truncate text-ellipsis"
+            :title="doctor"
+        >
+            {{ doctor }}
+        </p>
+        <p class="text-xs md:text-sm font-medium">{{ status }}</p>
     </div>
 </template>
 
@@ -16,27 +35,27 @@ export default {
     props: {
         service: {
             type: String,
-            default: "Service Name",
+            default: "{{ Service }}",
         },
         time: {
             type: String,
-            default: "Time",
+            default: "{{ Time }}",
         },
         patient: {
             type: String,
-            default: "Patient Name",
+            default: "{{ Patient }}",
         },
         client: {
             type: String,
-            default: "Client Name",
+            default: "{{ Client }}",
         },
         doctor: {
             type: String,
-            default: "Doctor Name",
+            default: "{{ Doctor }}",
         },
         status: {
             type: String,
-            default: "Status",
+            default: "{{ Status }}",
         },
     },
 };

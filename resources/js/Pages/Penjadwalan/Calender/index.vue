@@ -35,13 +35,13 @@ const titlePage = computed(() => usePage().props.titlePage);
                 />
             </div>
         </div>
-        <div class="flex h-screen overflow-y-auto p-2">
+        <div class="flex h-screen overflow-y-auto py-3">
             <div class="flex gap-3">
                 <div
-                    class="flex flex-col items-center gap-3 p-2 min-w-[200px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
                 >
                     <div
-                        class="w-full bg-primary-500 rounded py-1 text-white text-center shadow-md"
+                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
                     >
                         <h1 class="font-bold">Senin | 12</h1>
                     </div>
@@ -61,19 +61,20 @@ const titlePage = computed(() => usePage().props.titlePage);
                     ></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 p-2 min-w-[200px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
                 >
                     <div
-                        class="w-full bg-primary-500 rounded py-1 text-white text-center shadow-md"
+                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
                     >
                         <h1 class="font-bold">Selasa | 13</h1>
                     </div>
+                    <ScheduleCard></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 p-2 min-w-[200px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
                 >
                     <div
-                        class="w-full bg-primary-500 rounded py-1 text-white text-center shadow-md"
+                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
                     >
                         <h1 class="font-bold">Rabu | 14</h1>
                     </div>
@@ -86,10 +87,10 @@ const titlePage = computed(() => usePage().props.titlePage);
                     ></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 p-2 min-w-[200px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
                 >
                     <div
-                        class="w-full bg-primary-500 rounded py-1 text-white text-center shadow-md"
+                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
                     >
                         <h1 class="font-bold">Kamis | 15</h1>
                     </div>
@@ -102,27 +103,28 @@ const titlePage = computed(() => usePage().props.titlePage);
                     ></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 p-2 min-w-[200px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
                 >
                     <div
-                        class="w-full bg-primary-500 rounded py-1 text-white text-center shadow-md"
+                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
                     >
                         <h1 class="font-bold">Jum'at | 16</h1>
                     </div>
+                    <ScheduleCard></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 p-2 min-w-[200px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
                 >
                     <div
-                        class="w-full bg-primary-500 rounded py-1 text-white text-center shadow-md"
+                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
                     >
                         <h1 class="font-bold">Sabtu | 17</h1>
                     </div>
                     <ScheduleCard></ScheduleCard>
                 </div>
-                <div class="flex flex-col items-center gap-3 p-2 min-w-[200px]">
+                <div class="flex flex-col items-center gap-3 min-w-[140px]">
                     <div
-                        class="w-full bg-primary-500 rounded py-1 text-white text-center shadow-md"
+                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
                     >
                         <h1 class="font-bold">Minggu | 18</h1>
                     </div>
