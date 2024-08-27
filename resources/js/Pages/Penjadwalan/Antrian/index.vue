@@ -17,9 +17,7 @@ defineProps({
     <AuthenticatedLayout>
         <Tabs page="terjadwal"></Tabs>
         <div class="p-5 bg-white border rounded-md">
-            <div
-                class="flex flex-col lg:flex-row items-start md:justify-between justify-center gap-5 mb-5"
-            >
+            <div class="flex flex-col lg:flex-row items-start md:justify-between justify-center gap-5 mb-5" >
                 <Header />
                 <SearchBar />
             </div>
