@@ -68,14 +68,10 @@ if (flashMessage !== null) {
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        <div class="flex items-center gap-2">
-                            Servis
-                        </div>
+                        <div class="flex items-center gap-2">Servis</div>
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        <div class="flex items-center gap-2">
-                            Dokter
-                        </div>
+                        <div class="flex items-center gap-2">Dokter</div>
                     </th>
                     <th scope="col" class="px-6 py-3">
                         <div class="flex items-center gap-2">
