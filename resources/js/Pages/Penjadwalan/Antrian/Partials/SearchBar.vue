@@ -1,8 +1,44 @@
+<script setup>
+import { ref, watch } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+
+// Create a form instance to manage the search state
+const form = useForm({
+    search: '',
+});
+
+// A ref to hold the timeout ID for debouncing
+const debounceTimeout = ref(null);
+
+// Function to handle search submission
+function fetchSearchResults() {
+    form.get(route('antrian'), {
+        preserveState: true, // Preserve state to avoid full page reload
+        preserveScroll: true, // Maintain the scroll position
+        only: ['reservations'] // Only fetch the reservations data
+    });
+}
+
+// Watch for changes in the search field and fetch results accordingly
+watch(() => form.search, (newValue) => {
+    // Clear the previous timeout
+    if (debounceTimeout.value) {
+        clearTimeout(debounceTimeout.value);
+    }
+
+    // Set a new timeout to delay the search request
+    debounceTimeout.value = setTimeout(() => {
+        fetchSearchResults();
+    }, 300); // 300ms debounce time
+});
+</script>
+
 <template>
     <div class="lg:w-fit w-full">
         <div>
-            <!-- Search // Adjust to have a livesearch for routing by adding attribute for route name-->
+            <!-- Search -->
             <form
+                @submit.prevent="fetchSearchResults"
                 class="min-w-full w-full flex items-center lg:justify-between sm:justify-end justify-between gap-5"
             >
                 <label
@@ -31,11 +67,11 @@
                         </svg>
                     </div>
                     <input
+                        v-model="form.search"
                         type="search"
                         id="default-search"
                         class="block w-64 p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Search"
-                        required
                     />
                 </div>
                 <div class="relative">

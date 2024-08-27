@@ -5,9 +5,12 @@ import Header from "./Partials/Header.vue";
 import SearchBar from "./Partials/SearchBar.vue";
 import Table from "./Partials/Table.vue";
 
+/**
+ * Pass the reservations prop to index
+ */
 defineProps({
-    bookings: Object,
-});
+    reservations: Object,
+})
 </script>
 
 <template>
@@ -21,6 +24,6 @@ defineProps({
                 <SearchBar />
             </div>
         </div>
-        <Table :bookings="bookings" />
+        <Table :reservations="reservations" />
     </AuthenticatedLayout>
 </template>

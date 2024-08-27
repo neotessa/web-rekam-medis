@@ -48,10 +48,13 @@ Route::middleware('auth')->group(function () {
             // Create
             Route::get('/create', [AntrianController::class, 'create'])->name('antrian.create');
             Route::post('/create', [AntrianController::class, 'store'])->name('antrian.create');
-            Route::get('/memulai', [AntrianController::class, 'memulai'])->name('antrian.memulai');
-            Route::get('/selesai', [AntrianController::class, 'selesai'])->name('antrian.selesai');
-            Route::get('/rawat-inap', [AntrianController::class, 'inpatient'])->name('antrian.inpatient');
-            Route::get('/rawat-jalan', [AntrianController::class, 'outpatient'])->name('antrian.outpatient');
+
+            // Edit
+            Route::get('/edit/{id}', [AntrianController::class, 'update'])->name('antrian.update');
+            Route::put('/edit/{id}', [AntrianController::class, 'edit'])->name('antrian.edit');
+
+            // Delete
+            Route::delete('/delete/{id}', [AntrianController::class, 'destroy'])->name('antrian.destroy');
         });
     });
 

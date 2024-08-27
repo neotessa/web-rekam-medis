@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('reservation_date');
             $table->integer('status')->comment('1 = registered, 2 = in examination, 3 = completed');
-            $table->integer('service')->comment('1 = Appointment, 2 = Grooming, 3 = Rawat Inap, 4 = Rawat Jalan');
+            $table->integer('service')->default(1)->comment('1 = Appointment, 2 = Grooming, 3 = Rawat Inap, 4 = Rawat Jalan');
             $table->unsignedBigInteger('doctor_id');
             $table->unsignedBigInteger('nurse_id');
             $table->unsignedBigInteger('created_by');
