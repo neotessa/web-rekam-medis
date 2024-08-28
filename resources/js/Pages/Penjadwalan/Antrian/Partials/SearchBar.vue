@@ -2,9 +2,10 @@
 import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 
-// Create a form instance to manage the search state
+// Create a form instance to manage the search and filter state
 const form = useForm({
     search: '',
+    status: null // Default status to null to include all statuses
 });
 
 // A ref to hold the timeout ID for debouncing
@@ -15,7 +16,10 @@ function fetchSearchResults() {
     form.get(route('antrian'), {
         preserveState: true, // Preserve state to avoid full page reload
         preserveScroll: true, // Maintain the scroll position
-        only: ['reservations'] // Only fetch the reservations data
+        only: ['reservations'], // Only fetch the reservations data
+        params: {
+            status: form.status // Include status in the request
+        }
     });
 }
 
@@ -31,6 +35,12 @@ watch(() => form.search, (newValue) => {
         fetchSearchResults();
     }, 300); // 300ms debounce time
 });
+
+// Function to set the status filter
+function setStatus(status) {
+    form.status = status; // Update the status in the form
+    fetchSearchResults(); // Fetch the filtered results
+}
 </script>
 
 <template>
@@ -44,8 +54,9 @@ watch(() => form.search, (newValue) => {
                 <label
                     for="default-search"
                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-                    >Search</label
                 >
+                    Search
+                </label>
                 <div class="relative">
                     <div
                         class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3"
@@ -82,11 +93,7 @@ watch(() => form.search, (newValue) => {
                         class="p-2 inline-flex items-center text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         type="button"
                     >
-                        <img
-                            src="/images/filter.svg"
-                            class="w-5"
-                            alt=""
-                        />
+                        <img src="/images/filter.svg" class="w-5" alt="" />
                     </button>
                     <!-- Dropdown menu filter -->
                     <div
@@ -100,30 +107,38 @@ watch(() => form.search, (newValue) => {
                             <li>
                                 <a
                                     href="#"
+                                    @click.prevent="setStatus(null)"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >Klien</a
                                 >
+                                    All Status
+                                </a>
                             </li>
                             <li>
                                 <a
                                     href="#"
+                                    @click.prevent="setStatus(1)"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >Servis</a
                                 >
+                                    Waiting For Approval
+                                </a>
                             </li>
                             <li>
                                 <a
                                     href="#"
+                                    @click.prevent="setStatus(2)"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >Dokter</a
                                 >
+                                    On Progress
+                                </a>
                             </li>
                             <li>
                                 <a
                                     href="#"
+                                    @click.prevent="setStatus(3)"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >Status</a
                                 >
+                                    Done
+                                </a>
                             </li>
                         </ul>
                     </div>
