@@ -18,8 +18,9 @@ class AntrianController extends Controller
      */
     public function index(Request $request)
     {
-        // Set the title and get the correlated tables for livesearch and for fetching the data to the table view
+        // Set the title and get the correlated tables for livesearch, status filtering and for fetching the data to the table view
         $search = $request->input('search');
+        $status = $request->input('status');
 
         $titlePage = 'Antrian';
 
@@ -43,6 +44,9 @@ class AntrianController extends Controller
                 ->orWhereHas('created_by', function ($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%");
                 });
+        })
+        ->when($status, function ($q) use ($status) {
+            $q->where('status', $status);
         });
 
         // Paginate the result
