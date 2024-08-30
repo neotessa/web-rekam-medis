@@ -2,164 +2,124 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import ScheduleCard from "@/Components/Cards.vue";
 import { usePage } from "@inertiajs/vue3";
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 
+// Title of the page
 const titlePage = computed(() => usePage().props.titlePage);
+
+// Dummy schedule data
+const scheduleData = ref([
+    { time: "08:30", service: "1", patient: "C. Chloe", client: "Maulana Irfan", doctor: "Dr. Ahmad" },
+    { time: "09:00", service: "2", patient: "B. Bruno", client: "Adi Saputra", doctor: "Dr. Rita" },
+    { time: "10:00", service: "3", patient: "D. Doge", client: "Siti Aisyah", doctor: "Dr. Rahman" },
+    { time: "11:00", service: "4", patient: "E. Ellie", client: "Ahmad Faiz", doctor: "Dr. Tania" },
+    { time: "12:00", service: "1", patient: "F. Felix", client: "John Doe", doctor: "Dr. Akmal" },
+    { time: "13:00", service: "2", patient: "G. Ginger", client: "Jane Smith", doctor: "Dr. Maya" },
+    { time: "14:00", service: "3", patient: "H. Hugo", client: "Robert King", doctor: "Dr. Farah" },
+    { time: "15:00", service: "4", patient: "I. Izzy", client: "Emily Clark", doctor: "Dr. Nadiyah" },
+    { time: "16:00", service: "1", patient: "J. Jack", client: "Michael Brown", doctor: "Dr. Zain" },
+    { time: "17:00", service: "2", patient: "K. Kiwi", client: "Chris Evans", doctor: "Dr. Sarah" },
+    { time: "08:30", service: "1", patient: "C. Chloe", client: "Maulana Irfan", doctor: "Dr. Ahmad" },
+    { time: "09:00", service: "2", patient: "B. Bruno", client: "Adi Saputra", doctor: "Dr. Rita" },
+    { time: "10:00", service: "3", patient: "D. Doge", client: "Siti Aisyah", doctor: "Dr. Rahman" },
+    { time: "11:00", service: "4", patient: "E. Ellie", client: "Ahmad Faiz", doctor: "Dr. Tania" },
+    { time: "12:00", service: "1", patient: "F. Felix", client: "John Doe", doctor: "Dr. Akmal" },
+    { time: "13:00", service: "2", patient: "G. Ginger", client: "Jane Smith", doctor: "Dr. Maya" },
+    { time: "14:00", service: "3", patient: "H. Hugo", client: "Robert King", doctor: "Dr. Farah" },
+    { time: "15:00", service: "4", patient: "I. Izzy", client: "Emily Clark", doctor: "Dr. Nadiyah" },
+    { time: "16:00", service: "1", patient: "J. Jack", client: "Michael Brown", doctor: "Dr. Zain" },
+    { time: "17:00", service: "2", patient: "K. Kiwi", client: "Chris Evans", doctor: "Dr. Sarah" },
+    { time: "08:30", service: "1", patient: "C. Chloe", client: "Maulana Irfan", doctor: "Dr. Ahmad" },
+    { time: "09:00", service: "2", patient: "B. Bruno", client: "Adi Saputra", doctor: "Dr. Rita" },
+    { time: "10:00", service: "3", patient: "D. Doge", client: "Siti Aisyah", doctor: "Dr. Rahman" },
+    { time: "11:00", service: "4", patient: "E. Ellie", client: "Ahmad Faiz", doctor: "Dr. Tania" },
+    { time: "12:00", service: "1", patient: "F. Felix", client: "John Doe", doctor: "Dr. Akmal" },
+    { time: "13:00", service: "2", patient: "G. Ginger", client: "Jane Smith", doctor: "Dr. Maya" },
+    { time: "14:00", service: "3", patient: "H. Hugo", client: "Robert King", doctor: "Dr. Farah" },
+    { time: "15:00", service: "4", patient: "I. Izzy", client: "Emily Clark", doctor: "Dr. Nadiyah" },
+    { time: "16:00", service: "1", patient: "J. Jack", client: "Michael Brown", doctor: "Dr. Zain" },
+    { time: "17:00", service: "2", patient: "K. Kiwi", client: "Chris Evans", doctor: "Dr. Sarah" },
+]);
+
+// Days of the month
+const daysOfMonth = ref([]);
+
+// Selected month
+const selectedMonth = ref(new Date().toISOString().slice(0, 7)); // Default to current month (format: yyyy-MM)
+
+// Watch for changes in the month input
+watch(selectedMonth, (newMonth) => {
+    generateDaysOfMonth(newMonth);
+    distributeSchedules(); // Re-distribute schedules whenever the month changes
+});
+
+// Function to generate days for the selected month
+const generateDaysOfMonth = (month) => {
+    const [year, monthIndex] = month.split("-").map(Number);
+    const date = new Date(year, monthIndex - 1, 1); // Start at the first day of the month
+    const days = [];
+
+    // Loop through the month
+    while (date.getMonth() === monthIndex - 1) {
+        days.push({
+            day: date.toLocaleDateString("id-ID", { weekday: "long" }), // Full name of the day in Indonesian
+            date: date.getDate(), // Day of the month
+            schedules: [],
+        });
+        date.setDate(date.getDate() + 1); // Move to the next day
+    }
+
+    daysOfMonth.value = days;
+};
+
+// Function to randomly assign schedules to the days of the month
+const distributeSchedules = () => {
+    daysOfMonth.value.forEach(day => day.schedules = []); // Clear schedules first
+    scheduleData.value.forEach(schedule => {
+        const randomDayIndex = Math.floor(Math.random() * daysOfMonth.value.length);
+        daysOfMonth.value[randomDayIndex].schedules.push(schedule);
+    });
+};
+
+// Initialize with the current month
+generateDaysOfMonth(selectedMonth.value);
+distributeSchedules();
 </script>
 
 <template>
     <AuthenticatedLayout>
-
-
-            <!-- <div class="relative max-w-sm">
-                <div
-                    class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
-                >
-                    <svg
-                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                    >
-                        <path
-                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                        />
-                    </svg>
-                </div>
-                <input
-                    datepicker
-                    id="default-datepicker"
-                    type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Select date"
+        <div class="flex flex-col w-full h-full gap-3">
+            <div class="flex justify-end">
+                <input 
+                    type="month" 
+                    v-model="selectedMonth" 
+                    id="month" 
+                    class="w-96 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                    required 
                 />
-            </div> -->
-        <div class="flex flex-col w-full h-screen overflow-y-auto items-center py-3 bg-white ">
-            <!-- <div class="px-3 w-full flex flex-col gap-2 items-center">
-                <input type="month" class="border-none active:focus:border-none">
-                <div>Agustus 2024</div>
-                <div class="flex w-ful gap-5">
-                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
-                        <div class="text-xl font-bold">1</div>
-                        <div class="text-md">Senin</div>
-                    </button>
-                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
-                        <div class="text-xl font-bold">2</div>
-                        <div class="text-md">Selasa</div>
-                    </button>
-                    <button class="flex flex-col items-center justify-center bg-primary-600 text-white p-2 rounded hover:bg-primary-400 ">
-                        <div class="text-xl font-bold">3</div>
-                        <div class="text-md">Rabu</div>
-                    </button>
-                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
-                        <div class="text-xl font-bold">4</div>
-                        <div class="text-md">Kamis</div>
-                    </button>
-                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
-                        <div class="text-xl font-bold">5</div>
-                        <div class="text-md">Jumat</div>
-                    </button>
-                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
-                        <div class="text-xl font-bold">6</div>
-                        <div class="text-md">Sabtu</div>
-                    </button>
-                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
-                        <div class="text-xl font-bold">7</div>
-                        <div class="text-md">Minggu</div>
-                    </button>
-                </div>
-            </div> -->
-
-            <div class="flex gap-3">
-                <div class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2">
-                    <div class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md">
-                        <h1 class="font-bold">Senin | 12</h1>
-                    </div>
-                    <ScheduleCard
-                        time="08:30"
-                        service="Appointment"
-                        patient="C. Chloe"
-                        client="Maulana Irfan"
-                        doctor="Dr. Ahmad"
-                    ></ScheduleCard>
-                    <ScheduleCard
-                        time="08:30"
-                        service="Appointment"
-                        patient="C. Chloe"
-                        client="Maulana Irfan"
-                        doctor="Dr. Ahmad"
-                    ></ScheduleCard>
-                </div>
-                <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
-                >
-                    <div
-                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
+            </div>
+            <div class="flex flex-col w-full h-screen overflow-y-auto items-center py-3 bg-white">
+                <div class="flex w-full h-full justify-between gap-3">
+                    <!-- Loop through each day of the month -->
+                    <div 
+                        v-for="(day, index) in daysOfMonth" 
+                        :key="index" 
+                        class="flex flex-col items-center gap-3 w-full border-r-2 px-2"
                     >
-                        <h1 class="font-bold">Selasa | 13</h1>
+                        <div class="w-56 bg-primary-500 rounded py-1 text-white text-center shadow-md">
+                            <h1 class="font-bold">{{ day.date }} {{ day.day }}</h1>
+                        </div>
+                        <!-- Loop through the schedules for each day -->
+                        <ScheduleCard
+                            v-for="(schedule, idx) in day.schedules"
+                            :key="idx"
+                            :time="schedule.time"
+                            :service="schedule.service"
+                            :patient="schedule.patient"
+                            :client="schedule.client"
+                            :doctor="schedule.doctor"
+                        ></ScheduleCard>
                     </div>
-                    <ScheduleCard></ScheduleCard>
-                </div>
-                <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
-                >
-                    <div
-                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
-                    >
-                        <h1 class="font-bold">Rabu | 14</h1>
-                    </div>
-                    <ScheduleCard
-                        time="08:30"
-                        service="Grooming"
-                        patient="D. Doge"
-                        client="Irfan Maulana"
-                        doctor="Dr. Ahmad"
-                    ></ScheduleCard>
-                </div>
-                <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
-                >
-                    <div
-                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
-                    >
-                        <h1 class="font-bold">Kamis | 15</h1>
-                    </div>
-                    <ScheduleCard
-                        time="08:30"
-                        service="Appointment"
-                        patient="C. Chloe"
-                        client="Maulana Irfan"
-                        doctor="Dr. Ahmad"
-                    ></ScheduleCard>
-                </div>
-                <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
-                >
-                    <div
-                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
-                    >
-                        <h1 class="font-bold">Jum'at | 16</h1>
-                    </div>
-                    <ScheduleCard></ScheduleCard>
-                </div>
-                <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
-                >
-                    <div
-                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
-                    >
-                        <h1 class="font-bold">Sabtu | 17</h1>
-                    </div>
-                    <ScheduleCard></ScheduleCard>
-                </div>
-                <div class="flex flex-col items-center gap-3 min-w-[140px]">
-                    <div
-                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
-                    >
-                        <h1 class="font-bold">Minggu | 18</h1>
-                    </div>
-                    <ScheduleCard></ScheduleCard>
                 </div>
             </div>
         </div>

@@ -1,12 +1,13 @@
 <template>
     <div
-        class="flex h-32 w-32 md:h-40 md:w-40 flex-col rounded-md overflow-hidden border-l-4 border-l-red-600 bg-red-400 p-2"
+        :class="borderColor"
+        class="flex w-56 flex-col rounded-md overflow-hidden p-2"
     >
         <p class="text-sm md:text-base font-semibold text-center underline">
             {{ time }}
         </p>
         <p class="text-base md:text-base font-bold text-center italic">
-            {{ service }}
+            {{ serviceName }}
         </p>
         <p
             class="text-sm md:text-base font-semibold truncate text-ellipsis"
@@ -56,6 +57,33 @@ export default {
         status: {
             type: String,
             default: "{{ Status }}",
+        },
+    },
+    computed: {
+        serviceName() {
+            // Mapping service integers to their respective names
+            const serviceMap = {
+                '1': 'Appointment',
+                '2': 'Grooming',
+                '3': 'Rawat Inap',
+                '4': 'Rawat Jalan',
+            };
+            return serviceMap[this.service] || 'Unknown Service'; // Default if none match
+        },
+        borderColor() {
+            // Color coding based on service type
+            switch (this.service) {
+                case '1':
+                    return 'border-l-8 border-l-green-500 bg-green-200';
+                case '2':
+                    return 'border-l-8 border-l-blue-500 bg-blue-200';
+                case '3':
+                    return 'border-l-8 border-l-red-500 bg-red-200';
+                case '4':
+                    return 'border-l-8 border-l-yellow-500 bg-yellow-200';
+                default:
+                    return 'border-l-8 border-l-gray-500 bg-gray-200'; // Default color if none match
+            }
         },
     },
 };
