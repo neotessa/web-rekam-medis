@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex h-40 w-32 flex-col rounded-md overflow-hidden border-l-4 border-l-red-600 bg-red-400 p-2"
+        class="flex h-32 w-32 md:h-40 md:w-40 flex-col rounded-md overflow-hidden border-l-4 border-l-red-600 bg-red-400 p-2"
     >
         <p class="text-sm md:text-base font-semibold text-center underline">
             {{ time }}

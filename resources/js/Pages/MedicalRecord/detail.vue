@@ -14,97 +14,198 @@ const currentPage = computed(() => usePage().props.currentPage);
                 <p class="text-white font-semibold text-lg">Profil Pasien</p>
                 <p class="text-white font-semibold text-lg">1Hewan2024</p>
             </div>
-            <div class="bg-white flex my-3 px-4 py-4 rounded">
-                <div class="w-20 sm:w-48 rounded">
+            <div class="bg-white my-3 px-4 py-4 rounded">
+                <div class="flex md:flex-row flex-col">
+                <div class=" md:w-56 w-full rounded border-none">
                     <img
-                        src="/images/blankProfile.svg"
+                        src="/images/cat.jpg"
                         alt="Extra large Profile"
+                        class="rounded"
                     />
+                </div>
+                <div class="flex flex-col gap-3 items-start text-xs sm:text-base  md:mx-5">
                     <div
-                        class="bg-red-600 p-2 mx-auto mt-3 rounded-lg w-fit"
+                        class="bg-red-600 p-2 items-center mt-3 rounded-lg w-fit h-10 flex  gap-1 text-white font-bold"
                         title="Aggressive"
                     >
                         <img
                             src="/images/paw-danger.svg"
                             alt="Trash Logo"
-                            class="w-7 inline align-middle"
+                            class="w-5 inline align-middle"
                         />
+                        <p>Aggressive</p>
                     </div>
+                    <table class="border-spacing-4 p-0" style="border-collapse: separate; width: 100%;">
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>"Nama Kucing"</td>
+                    </tr>
+                    <tr>
+                        <td>Spesies</td>
+                        <td>:</td>
+                        <td>"Spesiesnya"</td>
+                    </tr>
+                    <tr>
+                        <td>Ras</td>
+                        <td>:</td>
+                        <td>"Ras"</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin</td>
+                        <td>:</td>
+                        <td>"gender"</td>
+                    </tr>
+                    <tr>
+                        <td>Warna</td>
+                        <td>:</td>
+                        <td>"warna"</td>
+                    </tr>
+                    <tr>
+                        <td>Umur</td>
+                        <td>:</td>
+                        <td>"umur"</td>
+                    </tr>
+                    <tr>
+                        <td>Berat Badan</td>
+                        <td>:</td>
+                        <td>"berat badan"</td>
+                    </tr>
+                    <tr>
+                        <td>Perilaku</td>
+                        <td>:</td>
+                        <td>"perilaku"</td>
+                    </tr>
+                    <tr>
+                        <td>Steril</td>
+                        <td>:</td>
+                        <td>"steril"</td>
+                    </tr>
+                    <tr>
+                        <td>Riwayat Kesehatan</td>
+                        <td>:</td>
+                        <td>"riwayat kesehatan"</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="padding-top: 20px;">
+                        <h2 style="font-size: 1.5em; font-weight: bold;">Owner</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>"nama"</td>
+                    </tr>
+                    <tr>
+                        <td>No HP</td>
+                        <td>:</td>
+                        <td>"no hp"</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>"johndoe@email.com"</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>"jakarta barat"</td>
+                    </tr>
+                    </table>
                 </div>
-                <div class="flex justify-normal text-xs sm:text-base mx-3 px-3">
-                    <ul class="list-none mx-3">
-                        <li>Nama</li>
-                        <li>Spesies</li>
-                        <li>Ras</li>
-                        <li>Jenis Kelamin</li>
-                        <li>Warna</li>
-                        <li>Umur</li>
-                        <li>Berat Badan</li>
-                        <li>Perilaku</li>
-                        <li>Steril</li>
-                        <li>Riwayat Vaksinasi</li>
-                        <li>Riwayat Kesehatan</li>
-                    </ul>
-                    <ul class="list-none mx-3 font-semibold">
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                        <li>:</li>
-                    </ul>
-                    <ul class="list-none">
-                        <li>"Nama Kucing"</li>
-                        <li>"Spesiesnya"</li>
-                        <li>"Ras"</li>
-                        <li>"gender"</li>
-                        <li>"warna"</li>
-                        <li>"umur"</li>
-                        <li>"berat badan"</li>
-                        <li>"perilaku"</li>
-                        <li>"steril"</li>
-                        <li>"riwayat vaksin"</li>
-                        <li>"riwayat kesehatan"</li>
-                    </ul>
-                </div>
-                <div class="ml-auto">
+            </div>
+            <div class="flex justify-end mt-3">
                     <button
                         type="button"
-                        class="text-white bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-amber-400 dark:hover:bg-amber-500 focus:outline-none dark:focus:ring-amber-300"
+                        class="text-white w-fit flex gap-1 items-center bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm p-2 me-2 mb-2 dark:bg-amber-400 dark:hover:bg-amber-500 focus:outline-none dark:focus:ring-amber-300"
                     >
                         <img
                             src="/images/Edit.svg"
                             alt="Trash Logo"
-                            class="w-6 inline align-middle"
+                            class="w-5 inline align-middle"
                         />
+                        Edit
                     </button>
+            </div>
+            </div>
+            <!-- histori vaksin -->
+            <div class="flex justify-between bg-primary-500 px-3 py-3 rounded">
+                <p class="text-white font-semibold text-lg">
+                    Histori Vaksin
+                </p>
+            </div>
+            <div class="bg-white my-3 px-4 py-4 rounded">
+            <!-- table -->
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table
+                        class="min-w-max w-full table-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                    >
+                        <thead
+                            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                        >
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center gap-2">
+                                        No
+                                        <a href="#">
+                                            <svg
+                                                width="14"
+                                                height="8"
+                                                viewBox="0 0 14 8"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M12.0007 0.108587L13.0537 1.15928L7.21196 6.77688C7.11835 6.86744 7.00737 6.93897 6.88539 6.98736C6.76342 7.03576 6.63286 7.06005 6.50124 7.05886C6.36961 7.05766 6.23952 7.03099 6.11844 6.98039C5.99737 6.92978 5.8877 6.85624 5.79575 6.764L0.0541962 1.04105L1.12606 0.0106587L6.51498 5.38205L12.0007 0.108587Z"
+                                                    fill="#000000"
+                                                />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center gap-2">
+                                        Tanggal
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center gap-2">
+                                        Vaksin
+                                    </div>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                            >
+                                <th
+                                    scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                >
+                                    1
+                                </th>
+                                <td class="px-6 py-4">1-augustus-2024</td>
+                                <td class="px-6 py-4">Rabies</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+
+
             <!-- Patients Visits Section -->
             <div class="flex justify-between bg-primary-500 px-3 py-3 rounded">
                 <p class="text-white font-semibold text-lg">
-                    Histori Kunjungan
+                    Kunjungan
                 </p>
             </div>
             <div class="bg-white my-3 px-4 py-4 rounded">
                 <div
-                    class="flex flex-col lg:flex-row items-start md:justify-between justify-center gap-5 mb-5"
+                    class="flex flex-col lg:flex-row items-start md:justify-end mb-5"
                 >
-                    <div class="flex justify-between lg:w-96 w-full">
-                        <a
-                            class="w-full flex items-center justify-center text-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs md:text-sm px-3 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                            >Export</a
-                        >
-                        <a
-                            class="w-full flex items-center justify-center text-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs md:text-sm px-3 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                            >Import</a
-                        >
-                    </div>
                     <div class="lg:w-fit w-full">
                         <div>
                             <form

@@ -52,7 +52,7 @@ class AntrianController extends Controller
         // Paginate the result
         $reservations = $query->paginate(10);
 
-        return Inertia::render('Penjadwalan/Antrian/Terjadwal/index',[
+        return Inertia::render('Penjadwalan/Antrian/index',[
             'titlePage' => $titlePage,
             'reservations' => $reservations
         ]);

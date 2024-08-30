@@ -1,6 +1,5 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import Tabs from "@/Components/Tabs.vue";
 import Header from "./Partials/Header.vue";
 import SearchBar from "./Partials/SearchBar.vue";
 import Table from "./Partials/Table.vue";
@@ -15,13 +14,12 @@ defineProps({
 
 <template>
     <AuthenticatedLayout>
-        <Tabs page="terjadwal"></Tabs>
-        <div class="p-5 bg-white border rounded-md">
-            <div class="flex flex-col lg:flex-row items-start md:justify-between justify-center gap-5 mb-5" >
+        <div class=" bg-white border rounded-md">
+            <div class="flex p-5 flex-col lg:flex-row items-start md:justify-between justify-center gap-5 mb-5">
                 <Header />
                 <SearchBar />
             </div>
+            <Table :reservations="reservations" />
         </div>
-        <Table :reservations="reservations" />
     </AuthenticatedLayout>
 </template>

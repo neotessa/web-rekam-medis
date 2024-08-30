@@ -10,6 +10,10 @@ const currentUrl = computed(() => page.url);
 
 // Check if a given URL is active
 const isActive = (url) => {
+    if (url === "/") {
+        return currentUrl.value === url;
+    }
+    
     return currentUrl.value.startsWith(url);
 };
 
@@ -37,7 +41,7 @@ const pageTitle = computed(() => page.props.titlePage);
                 <li>
                     <Link
                         :href="route('dashboard')"
-                        :class="{ 'bg-primary-800': isActive('/dashboard') }"
+                        :class="{ 'bg-primary-800': isActive('/') }"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-secondary-100 hover:bg-primary-700 dark:hover:bg-gray-700 group"
                     >
                         <img src="/images/dashboard.svg" alt="Logo" />

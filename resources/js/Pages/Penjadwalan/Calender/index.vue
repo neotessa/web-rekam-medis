@@ -9,8 +9,9 @@ const titlePage = computed(() => usePage().props.titlePage);
 
 <template>
     <AuthenticatedLayout>
-        <div>
-            <div class="relative max-w-sm">
+
+
+            <!-- <div class="relative max-w-sm">
                 <div
                     class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
                 >
@@ -33,16 +34,46 @@ const titlePage = computed(() => usePage().props.titlePage);
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select date"
                 />
-            </div>
-        </div>
-        <div class="flex h-screen overflow-y-auto py-3">
+            </div> -->
+        <div class="flex flex-col w-full h-screen overflow-y-auto items-center py-3 bg-white ">
+            <!-- <div class="px-3 w-full flex flex-col gap-2 items-center">
+                <input type="month" class="border-none active:focus:border-none">
+                <div>Agustus 2024</div>
+                <div class="flex w-ful gap-5">
+                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
+                        <div class="text-xl font-bold">1</div>
+                        <div class="text-md">Senin</div>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
+                        <div class="text-xl font-bold">2</div>
+                        <div class="text-md">Selasa</div>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-primary-600 text-white p-2 rounded hover:bg-primary-400 ">
+                        <div class="text-xl font-bold">3</div>
+                        <div class="text-md">Rabu</div>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
+                        <div class="text-xl font-bold">4</div>
+                        <div class="text-md">Kamis</div>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
+                        <div class="text-xl font-bold">5</div>
+                        <div class="text-md">Jumat</div>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
+                        <div class="text-xl font-bold">6</div>
+                        <div class="text-md">Sabtu</div>
+                    </button>
+                    <button class="flex flex-col items-center justify-center bg-primary-200 text-black p-2 rounded hover:bg-primary-400 ">
+                        <div class="text-xl font-bold">7</div>
+                        <div class="text-md">Minggu</div>
+                    </button>
+                </div>
+            </div> -->
+
             <div class="flex gap-3">
-                <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
-                >
-                    <div
-                        class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
-                    >
+                <div class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2">
+                    <div class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md">
                         <h1 class="font-bold">Senin | 12</h1>
                     </div>
                     <ScheduleCard
@@ -61,7 +92,7 @@ const titlePage = computed(() => usePage().props.titlePage);
                     ></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
                 >
                     <div
                         class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
@@ -71,7 +102,7 @@ const titlePage = computed(() => usePage().props.titlePage);
                     <ScheduleCard></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
                 >
                     <div
                         class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
@@ -87,7 +118,7 @@ const titlePage = computed(() => usePage().props.titlePage);
                     ></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
                 >
                     <div
                         class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
@@ -103,7 +134,7 @@ const titlePage = computed(() => usePage().props.titlePage);
                     ></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
                 >
                     <div
                         class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
@@ -113,7 +144,7 @@ const titlePage = computed(() => usePage().props.titlePage);
                     <ScheduleCard></ScheduleCard>
                 </div>
                 <div
-                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2"
+                    class="flex flex-col items-center gap-3 min-w-[140px] border-r-2 px-2"
                 >
                     <div
                         class="w-10/12 bg-primary-500 rounded py-1 text-white text-center shadow-md"
